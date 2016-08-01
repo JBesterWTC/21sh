@@ -39,6 +39,7 @@ char	**ft_cpy_env(char **env, int extra)
 		count++;
 		i++;
 	}
+	nenv[i] = NULL;
 	return (nenv);
 }
 
@@ -63,22 +64,45 @@ char	**ft_setenv(char **env, char *line)
 	char	*nline;
 
 	i = 0;
-	ft_putendl("entered");
 	info = ft_strsplit(line, ' ');
 	nline = ft_strjoin(info[1], "=");
 	nline = ft_strjoin(nline, info[2]);
-	ft_putendl(nline);
 	new = ft_cpy_env(env, 1);
-	free(env);
 	temp = NULL;
 	while (ft_strncmp(new[i], "_=", 2) != 0)
 		i++;
 	if (ft_strncmp(new[i], "_=", 2) == 0)
 	{
-		temp = ft_strcpy(temp, env[i]);
+		temp = ft_strdup(env[i]);
 		free(new[i]);
 		new[i] = ft_strdup(nline);
 		new[++i] = ft_strdup(temp);
+		free(temp);
 	}
+	new[++i] = NULL;
 	return (new);
+}
+
+void	ft_unsetenv(char ***env, char *line)
+{
+	char	**info;
+	int		i;
+	char	*temp;
+	int		len;
+
+	info = ft_strsplit(line, ' ');
+	i = 0;
+	len = ft_strlen(info[2]) - 1; 
+	while (ft_strncmp(*env[i], info[2], len) == 0)
+		i++;
+	if (ft_strncmp(*env[i], info[2], len) == 0)
+	{
+		temp = ft_strdup(*env[i]);
+		i++;
+		*env[i] = ft_strdup(*env[i]);
+		free(temp);
+		*env[i] = NULL;
+		i++;
+		free(*env[i]);
+	}
 }

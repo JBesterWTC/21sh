@@ -24,12 +24,6 @@ int	ft_check(char *line, char **nenv)
 		ft_display_env(nenv);
 		return (1);
 	}
-	if (ft_strncmp(line, "setenv", 6) == 0)
-	{
-		ft_putendl("Entered");
-		nenv = ft_setenv(nenv, line);
-		return (1);
-	}
 	return (0);
 	
 }
@@ -37,18 +31,20 @@ int	ft_check(char *line, char **nenv)
 int	main(int argc, char **argv, char **env)
 {
 	char	*line;
-	int		count;
 	char	**nenv;
 
 	(void)argc;
 	(void)argv;
 	line = 0;
-	count = 0;
 	nenv = ft_cpy_env(env, 0);
 	ft_putstr("Shell> ");
 	while ((ft_get_next_line(0, &line)) > 0)
 	{
-		if (ft_check(line, nenv) == 0)
+		if (ft_strncmp(line, "setenv", 6) == 0)
+			nenv = ft_setenv(nenv, line);
+		else if (ft_strncmp(line, "unsetenv", 6) == 0)
+			ft_unsetenv(&nenv, line);
+		else if (ft_check(line, nenv) == 0)
 		{
 			ft_putstr("21sh does not recognise the command: ");
 			ft_putendl(line);
