@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line.h                                 :+:      :+:    :+:   */
+/*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbester <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/28 12:02:52 by jbester           #+#    #+#             */
-/*   Updated: 2016/07/28 12:02:53 by jbester          ###   ########.fr       */
+/*   Created: 2016/08/04 12:17:21 by jbester           #+#    #+#             */
+/*   Updated: 2016/08/04 12:27:59 by jbester          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "21sh.h"
 
-# include "libft.h"
-# include <fcntl.h>
+char	**ft_set_oldpwd(char **env)
+{
+	char	res[4096];
 
-# define BUFF_SIZE 1000
+	getcwd(res, 4096);
+	env = ft_update_env(env, "OLDPWD", (char *)res);
+	return (env);
+}
 
-int	ft_get_next_line(int const fd, char **line);
+char	**ft_set_pwd(char **env)
+{
+	char	res[4096];
 
-#endif
+	getcwd(res, 4096);
+	env = ft_update_env(env, "PWD", (char *)res);
+	return (env);
+}

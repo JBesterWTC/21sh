@@ -6,7 +6,7 @@
 #    By: jbester <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/28 12:09:30 by jbester           #+#    #+#              #
-#    Updated: 2016/07/28 12:59:16 by jbester          ###   ########.fr        #
+#    Updated: 2016/08/04 12:21:27 by jbester          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = 21sh
 
 NAME2 = libft/libft.a
 
-SRCS = main.c env.c function.c
+SRCS = main.c env.c function.c	\
+	   command.c env2.c
 
 DIR = "libft"
 
