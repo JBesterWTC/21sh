@@ -26,11 +26,14 @@ int	ft_check(char *line, char **nenv)
 		ft_display_env(nenv);
 		return (1);
 	}
+<<<<<<< HEAD
 	if (ft_strncmp(line, "pwd", 3) == 0)
 	{
 		get_pwd();
 		return (1);
 	}
+=======
+>>>>>>> 2402c6395609e7dc5bd3b1d7d8d470ac9b3f82b7
 	return (0);
 }
 
@@ -46,12 +49,19 @@ int	main(int argc, char **argv, char **env)
 	ft_putstr("Shell> ");
 	while ((ft_get_next_line(0, &line)) > 0)
 	{
+<<<<<<< HEAD
 		if ((ft_strncmp(line, "setenv", 6)) == 0)
 			nenv = ft_setenv(nenv, line);
 		else if ((ft_strncmp(line, "unsetenv", 8)) == 0)
 			nenv = ft_unsetenv(nenv, line);
 		else if (ft_strncmp(line, "cd", 2) == 0)
 			change_dir(line, nenv);
+=======
+		if (ft_strncmp(line, "setenv", 6) == 0)
+			nenv = ft_setenv(nenv, line);
+		else if (ft_strncmp(line, "unsetenv", 6) == 0)
+			nenv = ft_unsetenv(nenv, line);
+>>>>>>> 2402c6395609e7dc5bd3b1d7d8d470ac9b3f82b7
 		else if (ft_check(line, nenv) == 0)
 		{
 			ft_putstr("21sh does not recognise the command: ");

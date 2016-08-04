@@ -27,6 +27,7 @@ char	**ft_update_env(char **env, char *name, char *value)
 
 	i = 0;
 	temp = 0;
+<<<<<<< HEAD
 	len = ft_strlen(name) - 1;
 	new = ft_strjoin(name, "=");
 	new = ft_strjoin(new, value);
@@ -37,6 +38,19 @@ char	**ft_update_env(char **env, char *name, char *value)
 			temp = ft_strdup(env[i]);
 			free(env[i]);
 			env[i] = ft_strdup(new);
+=======
+	len = ft_strlen(name);
+	new = ft_strjoin(name, "=");
+	new = ft_strjoin(new, value);
+	new = ft_strjoin(new, "\0");
+	while (env[i])
+	{
+		if(ft_strncmp(env[i], name, len) == 0)
+		{
+			temp = ft_strdup(env[i]);
+			free(env[i]);
+			env[i] = ft_strdup(temp);
+>>>>>>> 2402c6395609e7dc5bd3b1d7d8d470ac9b3f82b7
 			return (env);
 		}
 		i++;

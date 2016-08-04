@@ -27,11 +27,14 @@ void	ft_skip(char **s);
 char	**ft_setenv(char **env, char *line);
 char	**ft_unsetenv(char **env, char *line);
 char	**ft_update_env(char **env, char *name, char *value);
+<<<<<<< HEAD
 void	get_pwd(void);
 int		change_dir(char *line, char **env);
 int		check_dir(char *dir);
 char	**ft_set_oldpwd(char **env);
 char	**ft_set_pwd(char **env);
 char	*ft_cd_back(char **env);
+=======
+>>>>>>> 2402c6395609e7dc5bd3b1d7d8d470ac9b3f82b7
 
 #endif
