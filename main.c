@@ -43,7 +43,7 @@ int	main(int argc, char **argv, char **env)
 		if (ft_strncmp(line, "setenv", 6) == 0)
 			nenv = ft_setenv(nenv, line);
 		else if (ft_strncmp(line, "unsetenv", 6) == 0)
-			ft_unsetenv(&nenv, line);
+			nenv = ft_unsetenv(nenv, line);
 		else if (ft_check(line, nenv) == 0)
 		{
 			ft_putstr("21sh does not recognise the command: ");

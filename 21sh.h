@@ -25,6 +25,7 @@ char	**ft_cpy_env(char **env, int extra);
 void	ft_display_env(char **env);
 void	ft_skip(char **s);
 char	**ft_setenv(char **env, char *line);
-void	ft_unsetenv(char ***env, char *line);
+char	**ft_unsetenv(char **env, char *line);
+char	**ft_update_env(char **env, char *name, char *value);
 
 #endif
